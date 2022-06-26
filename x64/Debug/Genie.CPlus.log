@@ -1,2 +1,3 @@
-﻿  main.cpp
+﻿  Game.cpp
+C:\Local Code\Genie.CPlus\Game.cpp(21): warning C4715: 'Game::Initialize': not all control paths return a value
   Genie.CPlus.vcxproj -> C:\Local Code\Genie.CPlus\x64\Debug\Genie.CPlus.exe
