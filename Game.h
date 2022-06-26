@@ -3,6 +3,11 @@
 #include <stdio.h>
 #include <sdl.h>
 
+struct Vector2 {
+	float x;
+	float y;
+};
+
 class Game {
 public:
 	Game();
@@ -14,6 +19,7 @@ private:
 	void UpdateGame();
 	void GenerateOutput();
 
+	SDL_Renderer* mRenderer;
 	SDL_Window* mWindow;
 	bool mIsRunning;
 };
