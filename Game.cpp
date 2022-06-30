@@ -23,6 +23,10 @@ bool Game::Initialize() {
 
 	mRenderer = SDL_CreateRenderer(mWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
+	mBallPos.x = 1024.0f / 2.0f;
+	mBallPos.y = 768.0f / 2.0f;
+
+	return true;
 }
 
 void Game::ProcessInput() {
@@ -48,12 +52,30 @@ void Game::UpdateGame() {
 }
 
 void Game::GenerateOutput() {
-	SDL_SetRenderDrawColor(mRenderer, 255, 255, 255, 255);
-	SDL_Rect wall{ 0, 0, 1024, thickness };
-
-	SDL_RenderFillRect(mRenderer, &wall);
+	SDL_SetRenderDrawColor(mRenderer, 0, 0, 255, 255);
 	
 	SDL_RenderClear(mRenderer);
+
+	SDL_SetRenderDrawColor(mRenderer, 255, 255, 255, 255);
+	
+	SDL_Rect wall{ 
+		0, 
+		0, 
+		1024, 
+		thickness 
+	};
+
+	SDL_RenderFillRect(mRenderer, &wall);
+
+	SDL_Rect ball{
+		static_cast<int>(mBallPos.x - thickness / 2),
+		static_cast<int>(mBallPos.y - thickness / 2),
+		thickness,
+		thickness
+	};
+
+	SDL_RenderFillRect(mRenderer, &ball);
+
 	SDL_RenderPresent(mRenderer);
 }
 

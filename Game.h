@@ -22,4 +22,7 @@ private:
 	SDL_Renderer* mRenderer;
 	SDL_Window* mWindow;
 	bool mIsRunning;
+
+	Vector2 mPaddlePos;
+	Vector2 mBallPos;
 };
