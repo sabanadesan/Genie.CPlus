@@ -2,7 +2,7 @@
 
 const int thickness = 15;
 
-Game::Game() : mWindow(nullptr), mIsRunning(true) {
+Game::Game() : mWindow(nullptr), mTicksCount(0), mIsRunning(true) {
 
 }
 
@@ -48,7 +48,15 @@ void Game::ProcessInput() {
 }
 
 void Game::UpdateGame() {
+	while (!SDL_TICKS_PASSED(SDL_GetTicks(), mTicksCount + 16));
 
+	float deltaTime = (SDL_GetTicks() - mTicksCount) / 1000.0f;
+
+	if (deltaTime > 0.05f) {
+		deltaTime = 0.05f;
+	}
+
+	mTicksCount = SDL_GetTicks();
 }
 
 void Game::GenerateOutput() {
